@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HTML5 Canvas Demo</title>
+    <style>
+        #ctx {
+            width: 1020px;
+            height: 610px;
+            border: 3px solid green;
+            background-color: orange;
+        }
+    </style>
+    <style>
+        #submit {
+            width: 50px;
+            height: 20px;
+            
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="ctx" width="1020" height="610" style="border:1px solid #5c0a0a;"></canvas>
+    <label id="output"></label>
+    <form id="chat-form" action = '/' method = 'POST'>  
+        <input id="play-req-field" type="text" style="width:500px" name = 'data'></input>
+        <button id="submit" type="submit" onclick="play();">play</button>
+
+    </form>
+
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script>
+
+
+        var ctx = document.getElementById("ctx").getContext("2d");
+        var play_req_field = document.getElementById("play-req-field");
+        ctx.font = '30px Arial';
+
+        const Square = { dimension: 40 };
+
+        var socket = io();
+        socket.on('init', function (Data) {
+        Render(Data);
+
+        });
+
+        socket.on('update', function (Data) {
+        Render(Data);
+
+        });
+
+        function Render(Data) {
+
+            ctx.StrokeStyle = '#5c0a0a';
+            var Color = 0;
+            ctx.clearRect(0, 0, 500, 500);
+            ctx.fillStyle = 'rgb(' + Math.random() * 255 + ',' + Math.random() * 255 + ',' + Math.random() * 255 + ')';
+            ctx.fillStyle = 'rgb(200,100,0)';
+            ctx.fillRect(520 - Data.grid.Dimension.Width * Square.dimension * 0.5, 305 - Data.grid.Dimension.Hieght * Square.dimension * 0.5, Data.grid.Dimension.Width * Square.dimension, Data.grid.Dimension.Hieght * Square.dimension);
+            for (var i = 0; i < Data.grid.Components.length; i++) {
+                var component = Data.grid.Components[i];
+                ctx.fillStyle = 'rgb(' + component.ID.charCodeAt(0)%255 + ',' + component.ID.charCodeAt(1)%255 + ',' + component.ID.charCodeAt(2)%255 + ')';
+                ctx.fillText(component.ID.substring(0,8), 45, 25 + i * 30);
+                ctx.fillRect(5, 25 + i * 30 - 20, 30,30);
+                for (var j = 0; j < component.Body.length; j++) {
+                    ctx.fillRect(520 - Data.grid.Dimension.Width * Square.dimension * 0.5 + component.Body[j].X * Square.dimension, 305 - Data.grid.Dimension.Hieght * Square.dimension * 0.5 - component.Body[j].Y * Square.dimension + (Data.grid.Dimension.Hieght - 1) * Square.dimension, Square.dimension * 0.95, Square.dimension * 0.95);
+                }
+
+       
+            }
+
+
+        }
+
+        function play(){
+        
+            socket.emit('input', play_req_field.value);
+            document.getElementById('output').innerHTML = '///////////';
+
+        }
+
+   
+
+    </script>
+
+</body>
+
+</html>

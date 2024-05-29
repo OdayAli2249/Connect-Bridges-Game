@@ -1,0 +1,4 @@
+1- open cmd and type-> cd .../Connected Bridges Game .
+2- type in cmd the command : node app.js .
+3- open browser in Localhost:3000/ for inter input and click play .
+ 
