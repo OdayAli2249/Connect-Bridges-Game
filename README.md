@@ -6,8 +6,8 @@ This is a web application that generates a connected bridge game grid and solves
 
 ## Screenshots:
 <div style='display:flex;'>
-<img src="Images/CBG1.png" alt="Smaller" width="300"/>
-<img src="Images/CBG12.png" alt="Smaller" width="300"/>
+<img src="Images/CBG1.png" alt="Smaller" width="500"/>
+<img src="Images/CBG2.png" alt="Smaller" width="500"/>
 
 # Game Rules:
 
