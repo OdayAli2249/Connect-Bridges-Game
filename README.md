@@ -1,6 +1,17 @@
-# Connected Bridge Game Solver
+Unfortunately, the last branch for this repository is missing, and the current branch is an old branch that does not contain most of the content.
+
+# Connected Bridge Game
 
 This is a web application that generates a connected bridge game grid and solves it using various algorithms. The application is built with an Express.js server and features depth-first search, breadth-first search, A*, and hill climbing algorithms.
+
+## Screenshots:
+<div style='display:flex;'>
+<img src="images/CBG1.png" alt="Smaller" width="300"/>
+<img src="images/CBG12.png" alt="Smaller" width="300"/>
+
+# Game Rules:
+
+The game is played on an 𝑛×𝑚 grid where each cell can either represent wild land or water. Connected wild cells form islands, while connected water cells constitute the sea. The entire grid ensures all water cells are connected, forming a continuous sea. Players can move islands left, right, up, or down, provided there are no grid border crossings or collisions with other islands. The objective is to strategically move the islands to create a continuous connection of wild cells from the first row to the last row of the grid.
 
 ## Features
 
