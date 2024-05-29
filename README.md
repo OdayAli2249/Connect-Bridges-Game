@@ -9,7 +9,7 @@ This is a web application that generates a connected bridge game grid and solves
 <img src="Images/CBG1.png" alt="Smaller" width="500"/>
 <img src="Images/CBG2.png" alt="Smaller" width="500"/>
 
-# Game Rules:
+## Game Rules:
 
 The game is played on an 𝑛×𝑚 grid where each cell can either represent wild land or water. Connected wild cells form islands, while connected water cells constitute the sea. The entire grid ensures all water cells are connected, forming a continuous sea. Players can move islands left, right, up, or down, provided there are no grid border crossings or collisions with other islands. The objective is to strategically move the islands to create a continuous connection of wild cells from the first row to the last row of the grid.
 
